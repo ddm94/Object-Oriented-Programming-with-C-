@@ -1,2 +1,2 @@
 # Object-Oriented-Programming-with-Csharp
- An interactive text adventureg ame in C# and .NET 6
+ An interactive text adventure game in C# and .NET 6
