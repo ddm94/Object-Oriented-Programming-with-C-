@@ -25,5 +25,8 @@ namespace OOPAdventure
         public List<string> RoomDescriptions { get; protected set; }
 
         public string NoItem { get; protected set; } = "";
+        public string Backpack { get; protected set; } = "";
+        public string BackpackError { get; protected set; } = "";
+        public string BackpackDescription { get; protected set; } = "";
     }
 }
