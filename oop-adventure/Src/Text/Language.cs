@@ -41,5 +41,10 @@ namespace OOPAdventure
         public string Are { get; protected set; } = "";
         public string TotalItems { get; protected set; } = "";
         public string Period { get; protected set; } = "";
+        public string Take { get; protected set; } = "";
+        public string TakeError { get; protected set; } = "";
+        public string NotTaken { get; protected set; } = "";
+        public string TookDescription { get; protected set; } = "";
+        public string CantTakeDescription { get; protected set; } = "";
     }
 }
