@@ -13,5 +13,7 @@ namespace OOPAdventure
         public string DefaultRoomName { get; protected set; } = "";
         public string DefaultRoomDescription { get; protected set; } = "";
         public string ActionError { get; protected set; } = "";
+        public string Go { get; protected set; } = "";
+        public string GoError { get; protected set; } = "";
     }
 }

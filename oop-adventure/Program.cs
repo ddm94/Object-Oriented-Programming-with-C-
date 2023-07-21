@@ -17,3 +17,5 @@ var player = new Player(name);
 Console.WriteLine(Text.Language.Welcome,  player.Name);
 
 var house = new House(player);
+
+Actions.Instance.Register(new Go(house));
