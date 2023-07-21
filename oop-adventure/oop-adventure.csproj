@@ -16,7 +16,6 @@
     <None Remove="Src\Items\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Src\Text\" />
     <Folder Include="Src\Characters\" />
     <Folder Include="Src\Map\" />
     <Folder Include="Src\Actions\" />
