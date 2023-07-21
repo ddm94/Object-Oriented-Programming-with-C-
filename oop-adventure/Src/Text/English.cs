@@ -34,6 +34,11 @@ namespace OOPAdventure
             Backpack = "Backpack";
             BackpackError = "You don't have anything in your backpack.";
             BackpackDescription = "Your backpack contains: {0}.";
+            Chest = "chest";
+            UnlockChest = "You unlocked the chest.";
+            Key = "key";
+            ChestEmpty = "The chest is empty.";
+            ChestFound = "You found: {0}";
         }
     }
 }
