@@ -1,5 +1,4 @@
-﻿
-namespace OOPAdventure
+﻿namespace OOPAdventure
 {
     public class Player : Character
     {

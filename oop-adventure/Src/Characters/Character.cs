@@ -1,5 +1,4 @@
-﻿
-namespace OOPAdventure
+﻿namespace OOPAdventure
 {
     /// <summary>
     /// An abstract class can not be instantiated
