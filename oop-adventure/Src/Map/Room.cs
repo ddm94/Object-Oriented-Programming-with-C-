@@ -37,8 +37,8 @@ namespace OOPAdventure
             // This is a link; a shorthand way of doing queries inside C#
             // Look through each of the neighbour to test and see if it is > -1
             // p represents a single direction from the Names array
-            var directions = (from p in names where Neighbours[(Directions)Enum.Parse(typeof(Directions), p)] > -1
-                              select p.ToLower()).ToArray();
+            var directions = (from p in names where Neighbours[(Directions)Enum.Parse(typeof(Directions), p)] > -1 select 
+                              p.ToLower()).ToArray();
 
             // Take the room description and concatenate it with a list of valid directions
             var description = string.Format(Description, Text.Language.JoinedWordList(directions, Text.Language.And));

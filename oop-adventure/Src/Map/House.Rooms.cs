@@ -37,7 +37,7 @@ namespace OOPAdventure
                 var r = i / Width;
 
                 // Give each room a unique name
-                tmpRoom.Name = String.Format(Text.Language.DefaultName, i, c, r);
+                tmpRoom.Name = String.Format(Text.Language.DefaultRoomName, i, c, r);
 
                 // Calculate each of the neighbours
                 if (c < Width -1) // Check if the column is within the width of the grid
