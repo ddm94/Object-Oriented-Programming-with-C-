@@ -3,13 +3,16 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace OOPAdventure
 {
-    public class Inventory
+    public class Inventory : IInventory
     {
         private List<Item> Items { get; } = new();
 
         // Whenever we access the Total property,
         // it is the same thing as calling Items.Count
-        public int  Total => Items.Count;
+        public int Total => Items.Count;
+
+        // Link is going to select each of the items in the list, get the name and convert it to an array
+        public string[] InventoryList => Items.Select(i => i.Name).ToArray();
 
         public void Add(Item item)
         {
@@ -40,7 +43,7 @@ namespace OOPAdventure
         {
             var item = Find(itemName);
 
-            if (item != null && remove) 
+            if (item != null && remove)
             {
                 Remove(item);
             }
@@ -61,11 +64,11 @@ namespace OOPAdventure
             return Find(itemName, true);
         }
 
-        public void Use(string itemName, string source) 
+        public void Use(string itemName, string source)
         {
             var item = Find(itemName);
-            
-            if(item != null)
+
+            if (item != null)
             {
                 item.Use(source);
 
