@@ -23,7 +23,7 @@ namespace OOPAdventure
             var currentRoom = _house.CurrentRoom;
 
             // Convert first character to uppercase and the remaining characters to lowercase
-            var dir = args[1].Substring(0, 1).ToUpper() + args[2].Substring(1).ToLower();
+            var dir = args[1].Substring(0, 1).ToUpper() + args[1].Substring(1).ToLower();
 
             // Convert to a Direction enum
             // If it fails, it will automatically set the direction to none

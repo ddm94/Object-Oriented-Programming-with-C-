@@ -1,4 +1,6 @@
 ﻿
+using System.Text;
+
 namespace OOPAdventure
 {
     public class Room
@@ -18,5 +20,32 @@ namespace OOPAdventure
         };
 
         public bool Visited { get; set; }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+
+            // Check if the room has been visisted
+            if (Visited)
+                sb.Append(string.Format(Text.Language.RoomOld, Name));
+            else
+                sb.Append(string.Format(Text.Language.RoomNew, Name)); 
+
+            // Get a list of all directions that the player can move to from inside the room
+            var names = Enum.GetNames(typeof(Directions)); // Convert enum to a list of strings
+
+            // This is a link; a shorthand way of doing queries inside C#
+            // Look through each of the neighbour to test and see if it is > -1
+            // p represents a single direction from the Names array
+            var directions = (from p in names where Neighbours[(Directions)Enum.Parse(typeof(Directions), p)] > -1
+                              select p.ToLower()).ToArray();
+
+            // Take the room description and concatenate it with a list of valid directions
+            var description = string.Format(Description, Text.Language.JoinedWordList(directions, Text.Language.And));
+
+            sb.Append(description);
+
+            return sb.ToString();
+        }
     }
 }

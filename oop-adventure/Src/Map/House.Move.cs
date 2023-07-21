@@ -7,7 +7,7 @@ namespace OOPAdventure
 
         public void GoToRoom(int index)
         {
-            if(CurrentRoom == null)
+            if(CurrentRoom != null)
                 CurrentRoom.Visited = true;
 
             CurrentRoom = Rooms[index];

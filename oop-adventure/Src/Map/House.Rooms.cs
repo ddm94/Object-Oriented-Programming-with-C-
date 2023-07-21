@@ -38,6 +38,32 @@ namespace OOPAdventure
 
                 // Give each room a unique name
                 tmpRoom.Name = String.Format(Text.Language.DefaultName, i, c, r);
+
+                // Calculate each of the neighbours
+                if (c < Width -1) // Check if the column is within the width of the grid
+                {
+                    // Set neighbour to the East by calculating the room index of the current column plus one and the current row
+                    tmpRoom.Neighbours[Directions.East] = CalculateRoomIndex(c + 1, r);
+                }
+
+                if (c > 0) 
+                {
+                    // Neighbour to the left
+                    tmpRoom.Neighbours[Directions.West] = CalculateRoomIndex(c - 1, r);
+                }
+
+                if (r < Height - 1)
+                {
+                    tmpRoom.Neighbours[Directions.South] = CalculateRoomIndex(c, r + 1);
+                }
+
+                if (r > 0)
+                {
+                    tmpRoom.Neighbours[Directions.North] = CalculateRoomIndex(c, r - 1);
+                }
+
+                // Save the room to the correct position in the rooms array
+                Rooms[i] = tmpRoom;
             }
         }
     }
