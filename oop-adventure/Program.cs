@@ -9,16 +9,24 @@ var name = Console.ReadLine();
 if (name == String.Empty)
 {
     name = Text.Language.DefaultName;
-}    
+}
 
 var player = new Player(name);
 
 // {0} - Here name will automatically replace the 0 token
-Console.WriteLine(Text.Language.Welcome,  player.Name);
+Console.WriteLine(Text.Language.Welcome, player.Name);
 
 var house = new House(player);
 house.CreateRooms(3, 3);
 house.DecorateRooms();
+
+var items = new List<Item>()
+{
+    new Key(house),
+    new Chest(new[] {new Gold(100)}, house)
+};
+
+house.PopulateRooms(items);
 
 Actions.Instance.Register(new Go(house));
 Actions.Instance.Register(new Backpack(player));

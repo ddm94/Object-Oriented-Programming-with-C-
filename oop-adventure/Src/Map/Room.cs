@@ -51,6 +51,24 @@ namespace OOPAdventure
 
             sb.Append(description);
 
+            // Add a new string that will display all the items that exist in the room 
+            if(_inventory.Total > 0) // Items are in the room
+            {
+                var items = _inventory.InventoryList;
+
+                // Use Are for multiple items, Is for single item
+                var pluralPre = items.Length > 1 ? Text.Language.Are : Text.Language.Is;
+
+                // Add an s at the end of the item name if it is plural
+                var pluralPost = items.Length > 1 ? Text.Language.Plural : "";
+
+                // Tell the player how many items are in the room
+                sb.Append(string.Format(Text.Language.TotalItems, pluralPre, items.Length, pluralPost));
+
+                // Create a JoinedWorldList with all the items in the room
+                sb.Append(Text.Language.JoinedWordList(items, Text.Language.And) + Text.Language.Period);
+            }
+
             return sb.ToString();
         }
 
