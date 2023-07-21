@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UqLw8WT7q/yqinoXqYuGlLRN1VEUrcwTAR7FkiMAu+iXOci9zzFTvo/jAp01h3bBp9Y79AigF6DhJjn8HC6oww==",
+  "dgSpecHash": "HyXpI2gOttfQ8x73DECMi5FqK8HeIVSJ/oS16FlzZm82uxH93a95II9FnRJKTSoCYFnW0vbXC/ScJ+GASeEU6w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Varcx\\LinkedIn Learning\\Object-Oriented-Programming-with-C#\\oop-adventure\\oop-adventure.csproj",
+  "projectFilePath": "C:\\Users\\Varcx\\LinkedIn Learning\\Object-Oriented-Programming-with-Csharp\\oop-adventure\\oop-adventure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ddimo\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.20\\microsoft.windowsdesktop.app.ref.6.0.20.nupkg.sha512",
     "C:\\Users\\ddimo\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.20\\microsoft.netcore.app.ref.6.0.20.nupkg.sha512",

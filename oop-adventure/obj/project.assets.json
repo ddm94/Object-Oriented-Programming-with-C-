@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Varcx\\LinkedIn Learning\\Object-Oriented-Programming-with-C#\\oop-adventure\\oop-adventure.csproj",
+      "projectUniqueName": "C:\\Users\\Varcx\\LinkedIn Learning\\Object-Oriented-Programming-with-Csharp\\oop-adventure\\oop-adventure.csproj",
       "projectName": "oop-adventure",
-      "projectPath": "C:\\Users\\Varcx\\LinkedIn Learning\\Object-Oriented-Programming-with-C#\\oop-adventure\\oop-adventure.csproj",
+      "projectPath": "C:\\Users\\Varcx\\LinkedIn Learning\\Object-Oriented-Programming-with-Csharp\\oop-adventure\\oop-adventure.csproj",
       "packagesPath": "C:\\Users\\ddimo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Varcx\\LinkedIn Learning\\Object-Oriented-Programming-with-C#\\oop-adventure\\obj\\",
+      "outputPath": "C:\\Users\\Varcx\\LinkedIn Learning\\Object-Oriented-Programming-with-Csharp\\oop-adventure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ddimo\\AppData\\Roaming\\NuGet\\NuGet.Config",
