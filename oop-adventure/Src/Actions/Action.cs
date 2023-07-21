@@ -1,12 +1,13 @@
-﻿
-namespace OOPAdventure
+﻿namespace OOPAdventure;
+
+public abstract class Action
 {
-    public abstract class Action
+
+    public virtual string Name => "";
+
+    public virtual void Execute(string[] args)
     {
-        public virtual string Name => "";
-        public virtual void Execute(string[] args)
-        {
-            throw new Exception("Nothing to execute");
-        }
+        throw new Exception("Nothing to execute");
     }
+
 }

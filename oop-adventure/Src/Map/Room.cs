@@ -1,110 +1,102 @@
-﻿
-using System.Text;
+﻿using System.Text;
 
-namespace OOPAdventure
+namespace OOPAdventure;
+
+public class Room : IInventory
 {
-    public class Room : IInventory
+
+    public string Name { get; set; } = Text.Language.DefaultRoomName;
+    public string Description { get; set; } = Text.Language.DefaultRoomDescription;
+
+    private readonly IInventory _invnetory = new Inventory();
+
+    public Dictionary<Directions, int> Neighbors { get; set; } = new()
     {
-        public string Name { get; set; } = Text.Language.DefaultName;
-        public string Description { get; set; } = Text.Language.DefaultRoomDescription;
+        {Directions.North, -1 },
+        {Directions.East, -1 },
+        {Directions.South, -1 },
+        {Directions.West, -1 },
+        {Directions.None, -1 },
 
-        private readonly IInventory _inventory = new Inventory();
+    };
 
-        // Represents all the neighbours that this room can have
-        public Dictionary<Directions, int> Neighbours { get; set; } = new()
+    public bool Visited { get; set; }
+
+    public int Total => _invnetory.Total;
+
+    public string[] InventoryList => _invnetory.InventoryList;
+
+    public override string ToString()
+    {
+
+        var sb = new StringBuilder();
+
+        if (Visited)
+            sb.Append(string.Format(Text.Language.RoomOld, Name));
+        else
+            sb.Append(string.Format(Text.Language.RoomNew, Name));
+
+        var names = Enum.GetNames(typeof(Directions));
+
+        var directions = (from p in names where Neighbors[(Directions)Enum.Parse(typeof(Directions), p)] > -1 select p.ToLower()).ToArray();
+
+        var description = string.Format(Description, Text.Language.JoinedWordList(directions, Text.Language.And));
+
+        sb.Append(description);
+
+
+        if(_invnetory.Total > 0)
         {
-            // Initially set to -1 to let us know that there is no neighbour in that direction
-            {Directions.North, -1},
-            {Directions.South, -1},
-            {Directions.East, -1},
-            {Directions.West, -1},
-            {Directions.None, -1},
-        };
 
-        public bool Visited { get; set; }
+            var items = _invnetory.InventoryList;
 
-        public int Total => _inventory.Total;
+            var pluralPre = items.Length > 1 ? Text.Language.Are : Text.Language.Is;
 
-        public string[] InventoryList => _inventory.InventoryList;
+            var pluralPost = items.Length > 1 ? Text.Language.Plural : "";
 
-        public override string ToString()
-        {
-            var sb = new StringBuilder();
+            sb.Append(string.Format(Text.Language.TotalItems, pluralPre, items.Length, pluralPost));
 
-            // Check if the room has been visisted
-            if (Visited)
-                sb.Append(string.Format(Text.Language.RoomOld, Name));
-            else
-                sb.Append(string.Format(Text.Language.RoomNew, Name)); 
+            sb.Append(Text.Language.JoinedWordList(items, Text.Language.And) + Text.Language.Period);
 
-            // Get a list of all directions that the player can move to from inside the room
-            var names = Enum.GetNames(typeof(Directions)); // Convert enum to a list of strings
-
-            // This is a link; a shorthand way of doing queries inside C#
-            // Look through each of the neighbour to test and see if it is > -1
-            // p represents a single direction from the Names array
-            var directions = (from p in names where Neighbours[(Directions)Enum.Parse(typeof(Directions), p)] > -1 select 
-                              p.ToLower()).ToArray();
-
-            // Take the room description and concatenate it with a list of valid directions
-            var description = string.Format(Description, Text.Language.JoinedWordList(directions, Text.Language.And));
-
-            sb.Append(description);
-
-            // Add a new string that will display all the items that exist in the room 
-            if(_inventory.Total > 0) // Items are in the room
-            {
-                var items = _inventory.InventoryList;
-
-                // Use Are for multiple items, Is for single item
-                var pluralPre = items.Length > 1 ? Text.Language.Are : Text.Language.Is;
-
-                // Add an s at the end of the item name if it is plural
-                var pluralPost = items.Length > 1 ? Text.Language.Plural : "";
-
-                // Tell the player how many items are in the room
-                sb.Append(string.Format(Text.Language.TotalItems, pluralPre, items.Length, pluralPost));
-
-                // Create a JoinedWorldList with all the items in the room
-                sb.Append(Text.Language.JoinedWordList(items, Text.Language.And) + Text.Language.Period);
-            }
-
-            return sb.ToString();
         }
 
-        public void Add(Item item)
-        {
-            _inventory.Add(item);
-        }
 
-        public bool Contains(string itemName)
-        {
-            return _inventory.Contains(itemName);
-        }
+        return sb.ToString();
 
-        public Item? Find(string itemName)
-        {
-            return _inventory.Find(itemName);
-        }
+    }
 
-        public Item? Find(string itemName, bool remove)
-        {
-            return _inventory.Find(itemName, remove);
-        }
+    public void Add(Item item)
+    {
+        _invnetory.Add(item);
+    }
 
-        public void Remove(Item item)
-        {
-            _inventory.Remove(item);
-        }
+    public bool Conatins(string itemName)
+    {
+        return _invnetory.Conatins(itemName);
+    }
 
-        public Item? Take(string itemName)
-        {
-            return _inventory.Take(itemName);
-        }
+    public Item? Find(string itemName)
+    {
+        return _invnetory.Find(itemName);
+    }
 
-        public void Use(string itemName, string source)
-        {
-            _inventory.Use(itemName, source);
-        }
+    public Item? Find(string itemName, bool remove)
+    {
+        return _invnetory.Find(itemName, remove);
+    }
+
+    public void Remove(Item item)
+    {
+        _invnetory.Remove(item);
+    }
+
+    public Item? Take(string itemName)
+    {
+        return _invnetory.Take(itemName);
+    }
+
+    public void Use(string itemName, string source)
+    {
+        _invnetory.Use(itemName, source);
     }
 }

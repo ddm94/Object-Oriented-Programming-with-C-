@@ -1,12 +1,12 @@
-﻿
-namespace OOPAdventure
+﻿namespace OOPAdventure;
+
+public enum Directions
 {
-    public enum Directions
-    {
-        None,
-        North,
-        East,
-        South,
-        West
-    }
+
+    None,
+    North,
+    East,
+    South,
+    West
+
 }

@@ -1,21 +1,22 @@
-﻿
-namespace OOPAdventure
-{ 
-    public partial class House
-    { 
-        public Room CurrentRoom { get; set; }
+﻿namespace OOPAdventure;
 
-        public void GoToRoom(int index)
-        {
-            if(CurrentRoom != null)
-                CurrentRoom.Visited = true;
+public partial class House
+{
 
-            CurrentRoom = Rooms[index];
-        }
+    public Room CurrentRoom { get; set; }
 
-        public void GoToStartingRoom()
-        {
-            GoToRoom(_rnd.Next(0, Rooms.Length));
-        }
+    public void GoToRoom(int index)
+    {
+        if (CurrentRoom != null)
+            CurrentRoom.Visited = true;
+
+        CurrentRoom = Rooms[index];
     }
+
+    public void GoToStartingRoom()
+    {
+        GoToRoom(_rnd.Next(0, Rooms.Length));
+    }
+
+
 }

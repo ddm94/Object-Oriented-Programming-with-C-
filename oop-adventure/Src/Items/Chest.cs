@@ -1,95 +1,100 @@
-﻿
-namespace OOPAdventure
+﻿namespace OOPAdventure;
+
+public class Chest : Item, IInventory
 {
-    public class Chest : Item, IInventory
+
+    private readonly House _house;
+    private readonly Inventory _inventory = new();
+
+    public override string Name => Text.Language.Chest;
+
+    public bool Locked => true;
+
+    public Chest(Item?[] items, House house)
     {
-        private readonly House _house;
-        private readonly Inventory _inventory = new ();
 
-        public override string Name => Text.Language.Chest;
+        CanTake = false;
 
-        public bool Locked => true;
+        _house = house;
 
-        public Chest(Item?[] items, House house)
+        foreach(var item in items)
         {
-            // This ensure that the player can't accidentally take the chest from the room.
-            CanTake = false;
 
-            _house = house;
+            Add(item);
 
-            foreach (var item in items)
+        }
+
+    }
+
+    public override void Use(string source)
+    {
+
+        if(source == Text.Language.Key)
+        {
+
+            var items = InventoryList;
+
+            if (Locked)
+                Console.WriteLine(Text.Language.UnlockChest);
+
+            if(items.Length == 0)
             {
-                Add(item);
+                Console.WriteLine(Text.Language.ChestEmpty);
             }
-        }
-
-        public override void Use(string source)
-        {
-            if(source == Text.Language.Key)
+            else
             {
-                var items = InventoryList;
 
-                if (Locked)
-                    Console.WriteLine(Text.Language.UnlockChest);
+                Console.WriteLine(string.Format(Text.Language.ChestFound, Text.Language.JoinedWordList(items, Text.Language.And)));
 
-                // Chest is empty
-                if (items.Length == 0)
+                foreach(var itemName in items)
                 {
-                    Console.WriteLine(Text.Language.ChestEmpty);
+                    var item = Take(itemName);
+                    _house.Player.Add(item);
                 }
-                else
-                {
-                    // A list of items found in the chest where each item is joined by the word "and"
-                    Console.WriteLine(string.Format(Text.Language.ChestFound, Text.Language.JoinedWordList(items, Text.Language.And)));
 
-                    // Add each of the items in the chest into the player
-                    foreach (var itemName in items)
-                    {
-                        var item = Take(itemName);
-
-                        _house.Player.Add(item);
-                    }
-                }
             }
+
+
         }
 
-        public int Total => _inventory.Total;
+    }
 
-        public string[] InventoryList => _inventory.InventoryList;
+    public int Total => ((IInventory)_inventory).Total;
 
-        public void Add(Item item)
-        {
-            _inventory.Add(item);
-        }
+    public string[] InventoryList => ((IInventory)_inventory).InventoryList;
 
-        public bool Contains(string itemName)
-        {
-            return _inventory.Contains(itemName);
-        }
+    public void Add(Item item)
+    {
+        ((IInventory)_inventory).Add(item);
+    }
 
-        public Item? Find(string itemName)
-        {
-            return _inventory.Find(itemName);
-        }
+    public bool Conatins(string itemName)
+    {
+        return ((IInventory)_inventory).Conatins(itemName);
+    }
 
-        public Item? Find(string itemName, bool remove)
-        {
-            return _inventory.Find(itemName, remove);
-        }
+    public Item? Find(string itemName)
+    {
+        return ((IInventory)_inventory).Find(itemName);
+    }
 
-        public void Remove(Item item)
-        {
-            _inventory.Remove(item);
-        }
+    public Item? Find(string itemName, bool remove)
+    {
+        return ((IInventory)_inventory).Find(itemName, remove);
+    }
 
-        public Item? Take(string itemName)
-        {
-            return _inventory.Take(itemName);
-        }
+    public void Remove(Item item)
+    {
+        ((IInventory)_inventory).Remove(item);
+    }
 
-        public void Use(string itemName, string source)
-        {
-            _inventory.Use(itemName, source);
-        }
+    public Item? Take(string itemName)
+    {
+        return ((IInventory)_inventory).Take(itemName);
+    }
+
+    public void Use(string itemName, string source)
+    {
+        ((IInventory)_inventory).Use(itemName, source);
     }
 }

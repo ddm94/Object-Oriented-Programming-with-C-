@@ -1,18 +1,19 @@
-﻿
-using Microsoft.VisualBasic;
+﻿using OOPAdventure;
 
-namespace OOPAdventure
+public abstract class Item
 {
-    public abstract class Item
+
+    public virtual string Name { get; set; }
+
+    public bool SingleUse { get; set; }
+
+    public bool CanTake { get; set; } = true;
+
+    public virtual void Use(string source)
     {
-        public virtual string Name { get; set; } 
 
-        public bool SingleUse { get; set; }
-        public bool CanTake { get; set; } = true;
+        throw new NotImplementedException();
 
-        public virtual void Use(string source)
-        {
-            throw new NotImplementedException();
-        }
     }
+
 }

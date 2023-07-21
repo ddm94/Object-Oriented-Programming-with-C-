@@ -1,24 +1,29 @@
-﻿
-namespace OOPAdventure
+﻿namespace OOPAdventure;
+
+public static class Text
 {
-    public static class Text
+
+    private static Language _language;
+
+    public static Language Language
     {
-        private static Language _language;
 
-        public static Language Language 
-        { 
-            get 
-            {
-                if (_language == null)
-                    throw new Exception("No language loaded.");
-
-                return _language; 
-            } 
-        }
-
-        public static void LoadLanguage(Language language)
+        get
         {
-            _language = language;
+
+            if (_language == null)
+                throw new Exception("No language loaded.");
+
+            return _language;
+
         }
+
     }
+
+    public static void LoadLanguage(Language language)
+    {
+        _language = language;
+    }
+
+
 }
