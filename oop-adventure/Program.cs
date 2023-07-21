@@ -15,3 +15,5 @@ var player = new Player(name);
 
 // {0} - Here name will automatically replace the 0 token
 Console.WriteLine(Text.Language.Welcome,  player.Name);
+
+var house = new House(player);
